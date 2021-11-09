@@ -83,6 +83,20 @@ describe("Testing the products endpoints", () => {
     ).toBe(true);
   });
 
+  // Test product endpoints homework
+
+  it("should test that with a invalid product id the GET /products/:id endpoint is returning a 404 error", async () => {
+    const response = await request.get("/products/:id");
+    expect(response.status).toBe(404);
+  });
+
+  it("should test that with a valid product id the DELETE /products/:id endpoint is returning a 204", async () => {
+    const response = await request.delete("/products/:id");
+    // const response = await request.delete("/products/:id").send();
+    // const response = await request.delete("/products/:id").send("No content");
+    expect(response.status).toBe(204);
+  });
+
   // afterAll
 
   // We are going to drop the testing database in Mongo
